@@ -2,12 +2,21 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import './Heroes.css';
 import HeroInfo from "../HeroInfo/HeroInfo";
+
+//Redux imports
+import {useSelector, useDispatch} from 'react-redux';
+import {heroLookup}from '../../actions';
+
 export default function Heroes() {
+
+  const hero =  useSelector(state => state.hero);
+  const dispatch = useDispatch();
 
 const searchHero = (e) =>{
     e.preventDefault();
     const heroName = e.target.elements.heroName.value;
-    return heroName;
+    dispatch(heroLookup(heroName));
+    return;
 }
   return (
     <div>
@@ -21,7 +30,7 @@ const searchHero = (e) =>{
           <input className="heroFormInput" name="heroName" placeholder="Give me a Marvel Hero Name..."></input>
           <button type="submit" className="heroFormButton">Search</button>
           </form>
-          <HeroInfo></HeroInfo>
+          <HeroInfo hero={hero}></HeroInfo>
         </Grid>
       </Grid>
     </div>
