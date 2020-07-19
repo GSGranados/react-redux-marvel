@@ -1,17 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
+//STYLES
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
+//GENERAL IMPORTS
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore } from "redux";
+//REDUX IMPORTS
+import { createStore, applyMiddleware } from "redux";
 import allReducers from "./reducers";
 import { Provider } from "react-redux";
+//Middlewares
+import thunk from 'redux-thunk';
+//Extensions
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__());
-
-
+const store = createStore(allReducers,composeWithDevTools(
+  applyMiddleware(thunk)));
 ReactDOM.render(
   <React.StrictMode>
   <Provider store={store}>
