@@ -33,7 +33,7 @@ export const fetchHero = (heroName) => {
       axios.get(
         `https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=6a319681afe7fdafcc2a808530586b30&hash=f09ae5e956fc3e3db08f5f86be49fde4&name=${heroName}`
       ).then(response => {
-        const hero = response.data.data.results[0].comics.items;
+        const hero = response.data.data.results[0];
         console.log(hero.data)
         dispatch(heroLookupSuccess(hero))
       });

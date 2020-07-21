@@ -1,20 +1,36 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import {useSelector} from 'react-redux';
-function HeroInfo() {
-  const hero = useSelector((state) => state.hero);
-  console.log(hero.hero);
+import { connect } from "react-redux";
+function HeroInfo({ hero }) {
+  console.log(hero);
   return (
     <div>
-      <Grid 
-      container 
-      spacing={0}
-      style={{ paddingTop: "10px" }}>
-        <Grid  item xs={12} style={{textAlign:"center"}}>
+      <Grid container spacing={0} style={{ paddingTop: "10px" }}>
+        <Grid item xs={12} style={{ textAlign: "center" }}>
+          {hero.loading ? (
+            <h2>Loading Data...</h2>
+          ) : hero.error ? (
+            <h2>{hero.error}</h2>
+          ) : (
+            <div>
+              <span>{hero.hero.thumbnail}</span>
+              <ul>
+                {hero.hero.comics.map((comic) => { 
+                  return <li key={comic.resourceURI.toString()}><p>{comic.resourceURI}</p><p>{comic.name}</p></li>
+                })}
+              </ul>
+            </div>
+          )}
         </Grid>
       </Grid>
     </div>
   );
 }
 
-export default HeroInfo;
+const mapStateToProps = (state) => {
+  return {
+    hero: state.hero,
+  };
+};
+
+export default connect(mapStateToProps)(HeroInfo);

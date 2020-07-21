@@ -6,7 +6,10 @@ import {
 
 const initialState = {
   loading: false,
-  hero: [],
+  hero: {
+    thumbnail: '',
+    comics: [],
+  },
   error: "",
 };
 
@@ -16,20 +19,22 @@ const heroReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        hero: action.payload,
       };
     case HERO_LOOKUP_SUCCESS:
       return {
+        ...state,
         loading: false,
-        hero: action.payload,
-        error: "",
+        hero: {
+          thumbnail: `${action.payload.thumbnail.path}.${action.payload.thumbnail.extension}`,
+          comics: action.payload.comics.items,
+        },
       };
     case HERO_LOOKUP_FAILURE:
-      return{
+      return {
+        ...state,
         loading: false,
-        hero: [],
         error: action.payload,
-      }
+      };
     default:
       return state;
   }
