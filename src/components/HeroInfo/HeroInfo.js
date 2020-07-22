@@ -14,11 +14,7 @@ function HeroInfo({ hero }) {
           ) : (
             <div>
               <span>{hero.hero.thumbnail}</span>
-              <ul>
-                {hero.hero.comics.map((comic) => { 
-                  return <li key={comic.resourceURI.toString()}><p>{comic.resourceURI}</p><p>{comic.name}</p></li>
-                })}
-              </ul>
+            
             </div>
           )}
         </Grid>
