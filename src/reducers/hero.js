@@ -9,6 +9,11 @@ const initialState = {
   hero: {
     thumbnail: '',
     heroId: '',
+    heroName: '',
+    numberOfSeries: 0,
+    numberOfStories: 0,
+    numberOfEvents: 0,
+    numberOfComics: 0,
   },
   heroError: "",
 };
@@ -27,6 +32,11 @@ const heroReducer = (state = initialState, action) => {
         hero: {
           thumbnail: `${action.payload.thumbnail.path}.${action.payload.thumbnail.extension}`,
           heroId: action.payload.id,
+          heroName: action.payload.name,
+          numberOfSeries: action.payload.series.available,
+          numberOfStories: action.payload.stories.available,
+          numberOfEvents: action.payload.events.available,
+          numberOfComics: action.payload.comics.available,
         },
       };
     case HERO_LOOKUP_FAILURE:

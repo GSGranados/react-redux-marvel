@@ -1,29 +1,37 @@
-.heroFormInput{
-    height: 45px;
-    width: 300px;
-    border: none;
-    text-align: center;
-    border-bottom: 3px solid #ed1d24;
-    font-family: 'Bebas Neue', cursive;
-    background: none;
-    
+.heroFormInput {
+  height: 45px;
+  width: 300px;
+  border: none;
+  text-align: center;
+  border-bottom: 3px solid #ed1d24;
+  font-family: "Bebas Neue", cursive;
+  background: none;
+}
+form {
+  text-align: center;
 }
 
-
-.heroFormButton{
-    font-family: 'Bebas Neue', cursive;
-    margin-left: 5px;
-    padding: 8px 5px;
-    width: 80px;
-    border: none;
-    cursor: pointer;
-    background-color: #ed1d24;
-    color: white;
-    transition: all 0.45s ease-in-out;
-    font-size: 25px;
+.heroFormButton {
+  font-family: "Bebas Neue", cursive;
+  margin-left: 5px;
+  padding: 8px 5px;
+  width: 80px;
+  border: none;
+  cursor: pointer;
+  background-color: #ed1d24;
+  color: white;
+  transition: all 0.45s ease-in-out;
+  font-size: 25px;
 }
 
-.heroFormButton:hover{
-    background-color: white;
-    color: #ed1d24;
+.heroFormButton:hover {
+  background-color: white;
+  color: #ed1d24;
+}
+
+@media (max-width: 400px) {
+  .heroFormButton {
+    margin-top: 15px;
+    width: 80%;
+  }
 }
