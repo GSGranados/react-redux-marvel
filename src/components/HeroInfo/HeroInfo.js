@@ -12,6 +12,8 @@ import { connect } from "react-redux";
 import "./HeroInfo.css";
 //Other Imports
 import CountUp from "react-countup";
+//Carousel Import
+import Carousel from 'react-material-ui-carousel'
 
 const styles = {
   Paper: {
@@ -26,8 +28,10 @@ const styles = {
   },
 };
 
-function HeroInfo({ hero }) {
+function HeroInfo({ hero, comic }) {
   console.log(hero);
+  console.log(comic);
+  console.log(comic.comics.length);
   return (
     <div>
       {hero.loading ? (
@@ -78,7 +82,14 @@ function HeroInfo({ hero }) {
                     variant="h5"
                     style={{ fontFamily: "Bebas Neue", color: "#00000" }}
                   >
-                    <div className="heroDetailsContainer" style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap" }}>
+                    <div
+                      className="heroDetailsContainer"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-around",
+                        flexWrap: "wrap",
+                      }}
+                    >
                       <div className="heroDetails">
                         Series:{" "}
                         <CountUp
@@ -121,6 +132,41 @@ function HeroInfo({ hero }) {
               </Paper>
             )}
           </Grid>
+          {typeof comic.comics !== "undefined" && comic.comics.length > 0 ? (
+            <Grid container spacing={1} style={{ paddingTop: "10px" }}>
+              <Grid
+                className="ComicTitle"
+                item
+                xs={12}
+                style={{ textAlign: "center" }}
+              >
+                Comics
+              </Grid>
+              <Grid item xs={12} style={{ textAlign: "center" }}>
+                <Carousel navButtonsAlwaysVisible={true} indicators={false} animation={"slide"} fullHeightHover={true} autoPlay={false}>
+                  {comic.comics.map((comic, i) => {
+                    return (
+                      <Paper style={styles.Paper} key={i}>
+                        <img
+                          className="comicThumbnail"
+                          src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                          alt={comic.title}
+                        />
+                        <Typography
+                          variant="h5"
+                          style={{ fontFamily: "Bebas Neue", color: "#00000" }}
+                        >
+                          {comic.title}
+                        </Typography>
+                      </Paper>
+                    );
+                  })}
+                </Carousel>
+              </Grid>
+            </Grid>
+          ) : (
+            ""
+          )}
         </Grid>
       )}
     </div>
@@ -130,6 +176,7 @@ function HeroInfo({ hero }) {
 const mapStateToProps = (state) => {
   return {
     hero: state.hero,
+    comic: state.comic,
   };
 };
 

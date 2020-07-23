@@ -2,6 +2,24 @@
     max-width: 500px;
     max-height: 500px;
 }
+.ComicTitle{
+    font-family: "Bebas Neue", cursive;
+    font-size: 24px;
+}
+.comicThumbnail{
+    max-width: 500px;
+    max-height: 550px;
+}
+
+@media (max-width: 800px)  {
+
+    .comicThumbnail{
+        max-width: 500px;
+        max-height: 400px;
+    }
+
+
+}
 
 @media (max-width: 600px)  {
 
@@ -22,6 +40,10 @@
     }
     .heroDetailsContainer{
         flex-direction: column;
+    }
+    .comicThumbnail{
+        max-width: 300px;
+        max-height: 300px;
     }
 
 }

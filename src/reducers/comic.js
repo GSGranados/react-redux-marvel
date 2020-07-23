@@ -25,7 +25,7 @@ const comicReducer = (state = initialState, action) => {
     case COMICS_LOOKUP_FAILURE:
       return {
         ...state,
-        error: action.payload,
+        comicError: action.payload,
       };
     default:
       return state;

@@ -129,9 +129,7 @@ function App() {
         style={{ minHeight: "100vh" }}
         className="app-content"
       >
-        <Grid item xs={12}>
           <Router></Router>
-        </Grid>
       </Grid>
     </div>
   );
