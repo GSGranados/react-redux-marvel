@@ -1,0 +1,84 @@
+.comicThumbnail {
+  max-width: 600px;
+  max-height: 600px;
+}
+.ComicTitle {
+  font-family: "Bebas Neue", cursive;
+  font-size: 24px;
+}
+
+.comicTitle{
+    font-family: "Bebas Neue", cursive; 
+    color: #ed1d24;
+    font-size: 30px;
+}
+
+.optionsButton{
+    margin: 5px;
+    font-size: 24px;
+    font-family: "Bebas Neue", cursive; 
+    color: white;
+    border: none;
+    background-color: turquoise;
+    padding: 10px;
+    transition: 0.45s all ease-in-out;
+    border-radius: 10%;
+}
+.optionsButton:hover{
+    background-color: thistle;
+    color: black;
+}
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 900px) {
+  .comicDetails {
+    font-size: 20px;
+  }
+  .comicTitle{
+      font-size: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .comicThumbnail {
+    max-width: 500px;
+    max-height: 400px;
+  }
+  .comicDetails {
+    font-size: 17px;
+  }
+  .comicTitle{
+    font-size: 22px;
+}
+}
+
+@media (max-width: 650px) {
+  .comicThumbnail {
+    max-width: 400px;
+    max-height: 300px;
+  }
+
+  .comicDetails {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .comicThumbnail {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .comicDetailsContainer {
+    flex-direction: column;
+  }
+  .comicDetails {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .comicDetails {
+    font-size: 24px;
+  }
+}

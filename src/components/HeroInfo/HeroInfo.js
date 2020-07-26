@@ -13,7 +13,9 @@ import "./HeroInfo.css";
 //Other Imports
 import CountUp from "react-countup";
 //Carousel Import
-import Carousel from 'react-material-ui-carousel'
+import Carousel from "react-material-ui-carousel";
+//Router Imports
+import { Link } from "react-router-dom";
 
 const styles = {
   Paper: {
@@ -143,21 +145,38 @@ function HeroInfo({ hero, comic }) {
                 Comics
               </Grid>
               <Grid item xs={12} style={{ textAlign: "center" }}>
-                <Carousel navButtonsAlwaysVisible={true} indicators={false} animation={"slide"} fullHeightHover={true} autoPlay={false}>
+                <Carousel
+                  navButtonsAlwaysVisible={true}
+                  indicators={false}
+                  animation={"slide"}
+                  fullHeightHover={true}
+                  autoPlay={false}
+                >
                   {comic.comics.map((comic, i) => {
                     return (
                       <Paper style={styles.Paper} key={i}>
-                        <img
-                          className="comicThumbnail"
-                          src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                          alt={comic.title}
-                        />
-                        <Typography
-                          variant="h5"
-                          style={{ fontFamily: "Bebas Neue", color: "#00000" }}
+                        <Link
+                          style={{ textDecoration: "none", color: "black"}}
+                          to={{
+                            pathname: `/comic/${comic.id}`,
+                            state: {comic},
+                          }}
                         >
-                          {comic.title}
-                        </Typography>
+                          <img
+                            className="comicThumbnail"
+                            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                            alt={comic.title}
+                          />
+                          <Typography
+                            variant="h5"
+                            style={{
+                              fontFamily: "Bebas Neue",
+                              color: "#00000",
+                            }}
+                          >
+                            {comic.title}
+                          </Typography>
+                        </Link>
                       </Paper>
                     );
                   })}
